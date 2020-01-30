@@ -1,0 +1,25 @@
+
+<script type="text/javascript">
+   RED.nodes.registerType('user-has-role',
+   {
+      category: 'abacus',
+      color: '#8CC640',
+      defaults: { name: { value : '' } },
+      inputs:1,
+      outputs:2,
+      outputLabels: ['does not have role', 'has role'],
+      icon: 'function.png',
+      label: function() { return this.name || 'user-has-role'; }
+   });
+</script>
+
+<script type="text/x-red" data-template-name="user-has-role">
+   <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+   </div>
+</script>
+
+<script type="text/x-red" data-help-name="user-has-role">
+   <p>uses JWT to decode msg.token to msg.decodedToken   Will delete msg.decodedToken and add msg.error on failure</p>
+</script>

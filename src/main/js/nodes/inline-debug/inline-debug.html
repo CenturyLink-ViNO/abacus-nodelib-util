@@ -1,0 +1,98 @@
+
+<script type="text/x-red" data-template-name="inline-debug">
+   <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+   </div>
+   <div class="form-row">
+      <label for="node-input-level"><i class="icon-tag"></i>Level</label>
+      <select id="node-input-level">
+         <option value="none">None</option>
+         <option value="error">Error</option>
+         <option value="warning">Warning</option>
+         <option value="info">Info</option>
+         <option value="debug">Debug</option>
+         <option value="trace">Trace</option>
+      </select>
+   </div>
+   <div class="form-row">
+      <label for="node-input-complete"><i class="icon-tag"></i>Content</label>
+      <select id="node-input-complete">
+         <option value="message">Complete Message</option>
+         <option value="payload">Payload Only</option>
+         <option value="title">Node Name Only</option>
+      </select>
+   </div>
+   <div class="form-row">
+      <label for="node-input-logcontext"><i class="icon-tag"></i>Log context</label>
+      <select id="node-input-logcontext">
+         <option value="true">True</option>
+         <option value="false">False</option>
+      </select>
+   </div>
+   <div class="form-row">
+      <label for="node-input-additionaltext"><i class="icon-tag"></i>Text</label>
+      <input type="text" id="node-input-additionaltext" placeholder="some additional text">
+   </div>
+   <div class="form-row">
+      <label for="node-input-console"><i class="icon-tag"></i>Console</label>
+      <select id="node-input-console">
+         <option value="true">True</option>
+         <option value="false">False</option>
+      </select>
+   </div>
+   <div class="form-row">
+      <label for="node-input-tosidebar"><i class="icon-tag"></i>Debug window</label>
+      <select id="node-input-tosidebar">
+         <option value="true">True</option>
+         <option value="false">False</option>
+      </select>
+   </div>
+</script>
+
+<script type="text/x-red" data-help-name="inline-debug">
+   <p>Passes the input message to the output, but logs on the way.</p>
+   <p>Optionally displays selected message properties in the debug sidebar tab and
+      optionally the runtime log. By default it displays complete message.
+      It can also log just the <code>msg.payload</code></p>
+   <p> Different logging levels are also available.  Note that the debug and
+       trace levels will only appear if the node-red process was started with
+       the debug flag set.  Most inline-debug nodes should be set to no logging
+       prior to deployment. </p>
+   <h3>Details</h3>
+   <p>The debug sidebar provides a structured view of the messages it is sent,
+      making it easier to understand their structure.</p>
+   <p>JavaScript objects and arrays can be collapsed and expanded as required.
+      Buffer objects can be displayed as raw data or as a string if possible.
+   </p>
+   <p>Alongside each message, the debug sidebar includes information about the
+      time the message was received, the node that sent it and the type of the
+      message. Clicking on the source node id will reveal that node within
+      the workspace.</p>
+</script>
+
+<script type="text/javascript">
+   (function()
+   {
+      RED.nodes.registerType('inline-debug',
+      {
+         category: 'abacus',
+         defaults:
+         {
+            name: {value:""},
+            level: { value: "info"},
+            tosidebar: {value:"true"},
+            console: {value:"true"},
+            complete: {value:"message"},
+            logcontext: {value:"false"},
+            additionaltext: {value: ""}
+         },
+         label: function() { return (this.name||"inline-debug"); },
+         color:"#87A980",
+         inputs:1,
+         outputs:1,
+         icon: "debug.png",
+         align: "left"
+      });
+   })();
+</script>

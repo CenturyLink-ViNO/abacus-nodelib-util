@@ -1,0 +1,24 @@
+
+<script type="text/javascript">
+   RED.nodes.registerType('jws-token-decode',
+   {
+      category: 'abacus',
+      color: '#8CC640',
+      defaults: { name: { value : '' } },
+      inputs:1,
+      outputs:1,
+      icon: 'function.png',
+      label: function() { return this.name || 'jws-token-decode'; }
+   });
+</script>
+
+<script type="text/x-red" data-template-name="jws-token-decode">
+   <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name" placeholder="Name">
+   </div>
+</script>
+
+<script type="text/x-red" data-help-name="jws-token-decode">
+   <p>uses JWT to decode msg.token to msg.decodedToken   Will delete msg.decodedToken and add msg.error on failure</p>
+</script>

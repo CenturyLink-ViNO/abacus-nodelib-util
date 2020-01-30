@@ -1,0 +1,19 @@
+{
+   "name" : "abacus_util",
+   "version": "1.0.0",
+   "dependencies" :
+   {
+      "node-red-contrib-exit" : "*",
+      "deepmerge" : "*",
+      "jsonwebtoken": "8.4.0"
+   },
+   "node-red" :
+   {
+      "nodes":
+      {
+         "inline-debug": "inline-debug/inline-debug.js",
+         "jws-token-decode": "jws-token-decode/jws-token-decode.js",
+         "user-has-role": "user-has-role/user-has-role.js"
+      }
+   }
+}
